@@ -10,10 +10,15 @@ module.exports = {
   /**
    * `UserController.login()`
    */
+
+  // 以這邊為例，/views/user/login.ejs 裡面的form會透過routes.js呼叫到這個function
+  // 會傳入`email`和`password`
   login: function (req, res) {
 
-    // See `api/responses/login.js`
+    // res.login 是非預設的特製化 function，見 `api/responses/login.js`
     return res.login({
+      // req.param 是內建的 function，看evernote的筆記
+      // req.params：獲取路由的parameters
       email: req.param('email'),
       password: req.param('password'),
       successRedirect: '/',
@@ -48,8 +53,9 @@ module.exports = {
    */
   signup: function (req, res) {
 
-    // Attempt to signup a user using the provided parameters
+    // User.signup是model裡面的User.js的function
     User.signup({
+      // 丟進去一個dict，有名字、信箱和密碼
       name: req.param('name'),
       email: req.param('email'),
       password: req.param('password')
