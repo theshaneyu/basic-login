@@ -53,9 +53,9 @@ module.exports = {
    */
   signup: function (req, res) {
 
-    // User.signup是model裡面的User.js的function
+    // User.signup是model裡面的User.js的function，輸入 1) 一個Object 2) 一個Function
     User.signup({
-      // 丟進去一個dict，有名字、信箱和密碼
+      // 丟進去一個object，有名字、信箱和密碼
       name: req.param('name'),
       email: req.param('email'),
       password: req.param('password')
